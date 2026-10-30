@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>想要700訂閱的小勒 | Portal Site</title>
+    <style>
+        /* 網頁整體風格設計：採用類似小勒頻道的Tiffany藍綠色漸層 */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: #333;
+        }
+
+        .container {
+            max-width: 600px;
+            width: 90%;
+            margin: 50px auto;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.75);
+            padding: 40px 20px;
+            border-radius: 24px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        /* 大頭貼樣式 */
+        .profile-img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 4px solid #fff;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            object-fit: cover;
+        }
+
+        h1 {
+            margin: 20px 0 10px 0;
+            font-size: 24px;
+            color: #2c3e50;
+        }
+
+        .bio {
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 30px;
+            line-height: 1.5;
+        }
+
+        /* 按鈕樣式 */
+        .links-container {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .link-btn {
+            display: block;
+            padding: 16px;
+            text-decoration: none;
+            color: #fff;
+            background: #4a90e2;
+            border-radius: 12px;
+            font-size: 18px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        /* 讓 YouTube 主打按鈕微微發光閃爍 */
+        .youtube-btn {
+            background: #ff0000;
+            animation: pulse 2s infinite;
+        }
+
+        .link-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+            opacity: 0.9;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(255, 0, 0, 0.4); }
+            70% { box-shadow: 0 0 0 10px rgba(255, 0, 0, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(255, 0, 0, 0); }
+        }
+
+        footer {
+            margin-top: auto;
+            padding: 20px;
+            font-size: 14px;
+            color: #7f8c8d;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- 大頭貼：預設先用 YouTube 預設圖，你之後可以換成他的頭貼網址 -->
+        <img class="profile-img" src="https://youtube.com" alt="小勒的頭貼">
+        
+        <h1>想要700訂閱的小勒</h1>
+        <p class="bio">飛舞的櫻花會帶走你的思念 ✨<br>歡迎來到小勒的官方傳送門，點擊下方連結支持我吧！</p>
+
+        <div class="links-container">
+            <!-- 核心 YouTube 按鈕 -->
+            <a class="link-btn youtube-btn" href="https://youtube.com" target="_blank">
+                🔴 點我訂閱 YouTube 頻道
+            </a>
+
+            <!-- 預留的其他社群按鈕，如果你們有經營的話可以把 # 換成網址，沒有的話可以刪掉 -->
+            <a class="link-btn" style="background: #5865F2;" href="#" target="_blank">💬 Discord 交流伺服器</a>
+            <a class="link-btn" style="background: #E1306C;" href="#" target="_blank">📸 Instagram</a>
+            <a class="link-btn" style="background: #1DA1F2;" href="#" target="_blank">🕊️ X (Twitter)</a>
+        </div>
+    </div>
+
+    <footer>
+        © 2026 小勒 Project
+    </footer>
+
+</body>
+</html>

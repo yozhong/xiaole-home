@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>小勒的官網☆*: .｡. o(≧▽≦)o .｡.:*☆</title>
+    <title>小勒的官網官網☆*: .｡. o(≧▽≦)o .｡.:*☆</title>
     <style>
         * {
             box-sizing: border-box;
@@ -11,7 +11,7 @@
         }
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #1caec4, #57e3f5); /* 初音綠/青綠色調 */
+            background: linear-gradient(135deg, #74b9ff, #a1c4fd); 
             color: #333;
             text-align: center;
             padding: 50px 20px;
@@ -23,7 +23,7 @@
         .container {
             max-width: 500px;
             margin: auto;
-            background: rgba(255, 255, 255, 0.85);
+            background: rgba(255, 255, 255, 0.9);
             padding: 30px;
             border-radius: 24px;
             box-shadow: 0 12px 40px rgba(0,0,0,0.15);
@@ -32,25 +32,29 @@
             z-index: 10;
         }
         img.avatar {
-            width: 130px;
-            height: 130px;
+            width: 140px;
+            height: 140px;
             border-radius: 50%;
             border: 4px solid #fff;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.15);
             object-fit: cover;
+            animation: float 3s ease-in-out infinite;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-6px); }
         }
         h1 { 
-            margin: 20px 0 8px; 
-            font-size: 24px; 
-            color: #127a8a;
-            line-height: 1.4;
+            margin: 20px 0 10px; 
+            font-size: 22px; 
+            color: #0984e3;
         }
         p.tagline { 
             font-style: italic; 
-            color: #444; 
+            color: #555; 
             margin-bottom: 30px;
             font-size: 16px;
-            font-weight: 500;
+            font-weight: bold;
         }
         .links-container { 
             display: flex; 
@@ -60,40 +64,42 @@
         .link-btn {
             display: block;
             padding: 16px;
-            background: #20bcca;
+            background: #00cec9;
             color: white;
             text-decoration: none;
             border-radius: 12px;
             font-weight: bold;
             font-size: 16px;
-            box-shadow: 0 4px 15px rgba(32, 188, 202, 0.3);
+            box-shadow: 0 4px 15px rgba(0, 206, 201, 0.3);
             transition: all 0.3s ease;
             cursor: pointer;
         }
         .link-btn:hover { 
-            background: #179ea9; 
+            background: #00b894; 
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(32, 188, 202, 0.5);
+            box-shadow: 0 6px 20px rgba(0, 206, 201, 0.5);
         }
-        
-        /* 驚喜按鈕 */
         .surprise-btn {
-            background: #e67e22;
-            box-shadow: 0 4px 15px rgba(230, 126, 34, 0.3);
+            background: #ff7675;
+            box-shadow: 0 4px 15px rgba(255, 118, 117, 0.3);
             margin-top: 10px;
         }
         .surprise-btn:hover {
-            background: #d35400;
-            box-shadow: 0 6px 20px rgba(230, 126, 34, 0.5);
+            background: #d63031;
+            box-shadow: 0 6px 20px rgba(255, 118, 117, 0.5);
         }
-
+        .playing {
+            animation: pulse 1s infinite alternate;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.05); background: #e84393; }
+        }
         footer { 
             margin-top: 40px; 
             font-size: 12px; 
             color: #666; 
         }
-
-        /* 特效元件樣式 */
         .snowflake {
             position: fixed;
             top: -10%;
@@ -106,7 +112,6 @@
             0% { top: -10%; transform: translateX(0) rotate(0deg); }
             100% { top: 110%; transform: translateX(100px) rotate(360deg); }
         }
-
         .click-burst {
             position: fixed;
             pointer-events: none;
@@ -118,7 +123,6 @@
             0% { transform: translate(-50%, -50%) scale(0.5); opacity: 1; }
             100% { transform: translate(var(--mx), var(--my)) scale(1.2); opacity: 0; }
         }
-
         .trail-paws {
             position: fixed;
             pointer-events: none;
@@ -137,16 +141,16 @@
 <body>
 
     <div class="container">
-        <!-- 這裡讀取你上傳到 GitHub 的頭像圖片 -->
-        <img class="avatar" src="avatar.png" alt="小勒的頭像">
+        <!-- Q版貓耳小勒大頭貼 -->
+        <img class="avatar" src="https://googleusercontent.com" alt="小勒的頭像">
         
-        <!-- 更新後的主標題與副標題介紹 -->
+        <!-- 更新後的文字內容 -->
         <h1>小勒的官網☆*: .｡. o(≧▽≦)o .｡.:*☆</h1>
         <p class="tagline">嘿嘿!被你發現了(^///^)</p>
         
         <div class="links-container">
             <a class="link-btn" href="https://youtube.com" target="_blank">YouTube 頻道 🎬</a>
-            <div class="link-btn surprise-btn" id="surpriseBtn">點我有驚喜！🐾</div>
+            <div class="link-btn surprise-btn" id="surpriseBtn">點我有音樂與驚喜！🐾</div>
         </div>
         
         <footer>© 2026 想要700訂閱的小勒 Project</footer>
@@ -155,39 +159,33 @@
     <script>
         const cats = ['🐱', '🐈', '🐾', '🐈‍⬛', '😸', '😻'];
 
-        // 1. 貓貓自動飄落功能
         function createFallingCat() {
             const cat = document.createElement('div');
             cat.classList.add('snowflake');
             cat.innerText = cats[Math.floor(Math.random() * cats.length)];
             cat.style.left = Math.random() * 100 + 'vw';
             cat.style.animationDuration = Math.random() * 3 + 4 + 's';
-            cat.style.opacity = Math.random() * 0.5 + 0.3;
+            cat.style.opacity = Math.random() * 0.4 + 0.3;
             cat.style.fontSize = Math.random() * 15 + 15 + 'px';
             document.body.appendChild(cat);
-
             setTimeout(() => { cat.remove(); }, 7000);
         }
-        setInterval(createFallingCat, 400);
+        setInterval(createFallingCat, 450);
 
-        // 2. 拖曳/滑鼠移動留下貓爪印特效
         let lastMove = 0;
         window.addEventListener('mousemove', (e) => {
             const now = Date.now();
             if (now - lastMove < 50) return;
             lastMove = now;
-
             const paw = document.createElement('div');
             paw.classList.add('trail-paws');
             paw.innerText = '🐾';
             paw.style.left = e.clientX + 'px';
             paw.style.top = e.clientY + 'px';
             document.body.appendChild(paw);
-
             setTimeout(() => { paw.remove(); }, 500);
         });
 
-        // 3. 全螢幕點擊爆出貓貓表情 (點擊驚喜功能)
         function triggerBurst(x, y) {
             for (let i = 0; i < 8; i++) {
                 const burst = document.createElement('div');
@@ -195,35 +193,81 @@
                 burst.innerText = cats[Math.floor(Math.random() * cats.length)];
                 burst.style.left = x + 'px';
                 burst.style.top = y + 'px';
-
                 const angle = Math.random() * Math.PI * 2;
                 const distance = Math.random() * 80 + 40;
                 const mx = Math.cos(angle) * distance + 'px';
                 const my = Math.sin(angle) * distance + 'px';
                 burst.style.setProperty('--mx', mx);
                 burst.style.setProperty('--my', my);
-
                 document.body.appendChild(burst);
                 setTimeout(() => { burst.remove(); }, 600);
             }
         }
 
         window.addEventListener('click', (e) => {
-            if (e.target.tagName !== 'A') {
+            if (e.target.tagName !== 'A' && e.target.id !== 'surpriseBtn') {
                 triggerBurst(e.clientX, e.clientY);
             }
         });
 
-        document.getElementById('surpriseBtn').addEventListener('click', (e) => {
+        let audioCtx = null;
+        let isPlaying = false;
+        let melodyTimeout = null;
+
+        const notes = [
+            523.25, 587.33, 659.25, 698.46, 783.99, 880.00, 987.77, 1046.50,
+            880.00, 783.99, 698.46, 659.25, 587.33, 523.25, 783.99, 1046.50
+        ];
+        const tempo = 180;
+
+        function playNote(freq, duration) {
+            if (!audioCtx) return;
+            let osc = audioCtx.createOscillator();
+            let gain = audioCtx.createGain();
+            osc.type = 'triangle'; 
+            osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+            gain.gain.setValueAtTime(0.15, audioCtx.currentTime);
+            gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + duration - 0.02);
+            osc.connect(gain);
+            gain.connect(audioCtx.destination);
+            osc.start();
+            osc.stop(audioCtx.currentTime + duration);
+        }
+
+        function playMelody(index = 0) {
+            if (!isPlaying) return;
+            let noteIndex = index % notes.length;
+            playNote(notes[noteIndex], 0.25);
+            melodyTimeout = setTimeout(() => { playMelody(index + 1); }, tempo);
+        }
+
+        const surpriseBtn = document.getElementById('surpriseBtn');
+        surpriseBtn.addEventListener('click', (e) => {
             e.stopPropagation();
+            if (!audioCtx) {
+                audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+            }
             const rect = e.target.getBoundingClientRect();
             const centerX = rect.left + rect.width / 2;
             const centerY = rect.top + rect.height / 2;
-            
             for (let j = 0; j < 3; j++) {
                 setTimeout(() => {
                     triggerBurst(centerX + (Math.random() * 40 - 20), centerY + (Math.random() * 20 - 10));
                 }, j * 100);
+            }
+            if (!isPlaying) {
+                isPlaying = true;
+                surpriseBtn.innerText = "音樂播放中🎵 (再點一次關閉)";
+                surpriseBtn.classList.add('playing');
+                if (audioCtx.state === 'suspended') {
+                    audioCtx.resume();
+                }
+                playMelody();
+            } else {
+                isPlaying = false;
+                surpriseBtn.innerText = "點我有驚喜！ฅ^•ω•^ฅ";
+                surpriseBtn.classList.remove('playing');
+                clearTimeout(melodyTimeout);
             }
         });
     </script>

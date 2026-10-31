@@ -5,59 +5,231 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>想要700訂閱的小勒 | Portal Site</title>
     <style>
+        * {
+            box-sizing: border-box;
+            user-select: none;
+        }
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #ffe6e6, #ffb3b3); /* 這裡可以更換背景顏色 */
+            background: linear-gradient(135deg, #1caec4, #57e3f5); /* 使用你提供的青綠色調 */
             color: #333;
             text-align: center;
             padding: 50px 20px;
             margin: 0;
+            overflow-x: hidden;
+            min-height: 100vh;
+            position: relative;
         }
         .container {
-            max-width: 600px;
+            max-width: 500px;
             margin: auto;
             background: rgba(255, 255, 255, 0.85);
             padding: 30px;
-            border-radius: 20px;
-            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+            border-radius: 24px;
+            box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+            backdrop-filter: blur(10px);
+            position: relative;
+            z-index: 10;
         }
         img.avatar {
             width: 120px;
             height: 120px;
             border-radius: 50%;
             border: 4px solid #fff;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
         }
-        h1 { margin: 20px 0 10px; font-size: 24px; }
-        p.tagline { font-style: italic; color: #666; margin-bottom: 30px; }
-        .links-container { display: flex; flex-direction: column; gap: 15px; }
+        h1 { 
+            margin: 20px 0 5px; 
+            font-size: 24px; 
+            color: #127a8a;
+        }
+        p.tagline { 
+            font-style: italic; 
+            color: #555; 
+            margin-bottom: 30px;
+            font-size: 14px;
+        }
+        .links-container { 
+            display: flex; 
+            flex-direction: column; 
+            gap: 15px; 
+        }
         .link-btn {
             display: block;
-            padding: 15px;
-            background: #ff6666;
+            padding: 16px;
+            background: #20bcca;
             color: white;
             text-decoration: none;
-            border-radius: 10px;
+            border-radius: 12px;
             font-weight: bold;
-            transition: 0.3s;
+            font-size: 16px;
+            box-shadow: 0 4px 15px rgba(32, 188, 202, 0.3);
+            transition: all 0.3s ease;
+            cursor: pointer;
         }
-        .link-btn:hover { background: #ff4d4d; transform: scale(1.02); }
-        footer { margin-top: 40px; font-size: 12px; color: #888; }
+        .link-btn:hover { 
+            background: #179ea9; 
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(32, 188, 202, 0.5);
+        }
+        
+        /* 驚喜按鈕 */
+        .surprise-btn {
+            background: #e67e22;
+            box-shadow: 0 4px 15px rgba(230, 126, 34, 0.3);
+            margin-top: 10px;
+        }
+        .surprise-btn:hover {
+            background: #d35400;
+            box-shadow: 0 6px 20px rgba(230, 126, 34, 0.5);
+        }
+
+        footer { 
+            margin-top: 40px; 
+            font-size: 12px; 
+            color: #666; 
+        }
+
+        /* 特效元件樣式 */
+        .snowflake {
+            position: fixed;
+            top: -10%;
+            z-index: 1;
+            font-size: 24px;
+            pointer-events: none;
+            animation: fall linear infinite;
+        }
+        @keyframes fall {
+            0% { top: -10%; transform: translateX(0) rotate(0deg); }
+            100% { top: 110%; transform: translateX(100px) rotate(360deg); }
+        }
+
+        .click-burst {
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            font-size: 24px;
+            animation: burstOut 0.6s ease-out forwards;
+        }
+        @keyframes burstOut {
+            0% { transform: translate(-50%, -50%) scale(0.5); opacity: 1; }
+            100% { transform: translate(var(--mx), var(--my)) scale(1.2); opacity: 0; }
+        }
+
+        .trail-paws {
+            position: fixed;
+            pointer-events: none;
+            z-index: 5;
+            font-size: 14px;
+            opacity: 0.7;
+            transform: translate(-50%, -50%);
+            animation: fadeOutPaws 0.5s ease-out forwards;
+        }
+        @keyframes fadeOutPaws {
+            0% { opacity: 0.7; transform: translate(-50%, -50%) scale(1); }
+            100% { opacity: 0; transform: translate(-50%, -50%) scale(0.6); }
+        }
     </style>
 </head>
 <body>
+
     <div class="container">
-        <!-- 替換成小勒的頭像網址 -->
+        <!-- 記得把這裡的圖片網址替換成小勒的頭像 -->
         <img class="avatar" src="https://placeholder.com" alt="小勒的頭像">
-
+        
         <h1>想要700訂閱的小勒</h1>
-        <p class="tagline">一同見證達成 700 訂閱的奇蹟時刻！</p>
-
+        <p class="tagline">🐾 飛舞的貓貓會帶走你的思念 🐾</p>
+        
         <div class="links-container">
-            <a class="link-btn" href="https://www.youtube.com/@%E6%83%B3%E8%A6%81700%E8%A8%82%E9%96%B1%E7%9A%84%E5%B0%8F%E5%8B%92" target="_blank">YouTube 頻道</a>
-            <!-- 在這裡可以自由增加其他社群或平台的連結 -->
+            <a class="link-btn" href="https://youtube.com" target="_blank">YouTube 頻道</a>
+            <!-- 點擊驚喜按鈕 -->
+            <div class="link-btn surprise-btn" id="surpriseBtn">點我有驚喜！🐾</div>
         </div>
-
+        
         <footer>© 2026 想要700訂閱的小勒 Project</footer>
     </div>
+
+    <script>
+        const cats = ['🐱', '🐈', '🐾', '🐈‍⬛', '😸', '😻'];
+
+        // 1. 貓貓自動飄落功能
+        function createFallingCat() {
+            const cat = document.createElement('div');
+            cat.classList.add('snowflake');
+            cat.innerText = cats[Math.floor(Math.random() * cats.length)];
+            cat.style.left = Math.random() * 100 + 'vw';
+            cat.style.animationDuration = Math.random() * 3 + 4 + 's'; // 4到7秒飄完
+            cat.style.opacity = Math.random() * 0.5 + 0.3;
+            cat.style.fontSize = Math.random() * 15 + 15 + 'px';
+            document.body.appendChild(cat);
+
+            setTimeout(() => {
+                cat.remove();
+            }, 7000);
+        }
+        setInterval(createFallingCat, 400);
+
+        // 2. 拖曳/滑鼠移動留下貓爪印特效
+        let lastMove = 0;
+        window.addEventListener('mousemove', (e) => {
+            const now = Date.now();
+            if (now - lastMove < 50) return; // 限制產生頻率，避免太卡
+            lastMove = now;
+
+            const paw = document.createElement('div');
+            paw.classList.add('trail-paws');
+            paw.innerText = '🐾';
+            paw.style.left = e.clientX + 'px';
+            paw.style.top = e.clientY + 'px';
+            document.body.appendChild(paw);
+
+            setTimeout(() => { paw.remove(); }, 500);
+        });
+
+        // 3. 全螢幕點擊爆出貓貓表情 (點擊驚喜功能)
+        function triggerBurst(x, y) {
+            for (let i = 0; i < 8; i++) {
+                const burst = document.createElement('div');
+                burst.classList.add('click-burst');
+                burst.innerText = cats[Math.floor(Math.random() * cats.length)];
+                burst.style.left = x + 'px';
+                burst.style.top = y + 'px';
+
+                // 隨機噴射方向
+                const angle = Math.random() * Math.PI * 2;
+                const distance = Math.random() * 80 + 40;
+                const mx = Math.cos(angle) * distance + 'px';
+                const my = Math.sin(angle) * distance + 'px';
+                burst.style.setProperty('--mx', mx);
+                burst.style.setProperty('--my', my);
+
+                document.body.appendChild(burst);
+                setTimeout(() => { burst.remove(); }, 600);
+            }
+        }
+
+        // 綁定全網頁點擊與驚喜按鈕
+        window.addEventListener('click', (e) => {
+            // 排除點擊超連結，讓超連結正常運作
+            if (e.target.tagName !== 'A') {
+                triggerBurst(e.clientX, e.clientY);
+            }
+        });
+
+        // 點擊驚喜按鈕時額外大爆發
+        document.getElementById('surpriseBtn').addEventListener('click', (e) => {
+            e.stopPropagation(); // 防止觸發視窗點擊重複計算
+            const rect = e.target.getBoundingClientRect();
+            const centerX = rect.left + rect.width / 2;
+            const centerY = rect.top + rect.height / 2;
+            
+            // 多爆發幾次造成大噴發效果
+            for (let j = 0; j < 3; j++) {
+                setTimeout(() => {
+                    triggerBurst(centerX + (Math.random() * 40 - 20), centerY + (Math.random() * 20 - 10));
+                }, j * 100);
+            }
+        });
+    </script>
 </body>
 </html>

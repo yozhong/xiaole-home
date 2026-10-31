@@ -165,7 +165,6 @@
         <div class="links-container">
             <a class="link-btn" href="https://www.youtube.com/@%E6%83%B3%E8%A6%81700%E8%A8%82%E9%96%B1%E7%9A%84%E5%B0%8F%E5%8B%92" target="_blank">🎬 YouTube 頻道 🎬</a>
             <a class="link-btn" href="https://telegra.ph/%E8%87%AA%E8%A8%AD%E4%BB%8B%E7%B4%B9-%E0%B8%85%CF%89%E0%B8%85-10-25" target="_blank">📜 自設介紹 📜</a>
-            <div class="link-btn lofi-btn" id="musicBtn">🎵 播放音樂 🎵</div>
         </div>
         
         <footer>© 2026 想要700訂閱的小勒 Project</footer>
@@ -232,53 +231,3 @@
                 triggerBurst(e.clientX, e.clientY);
             }
         });
-
-        // 4. 自製放鬆 Lo-Fi 音樂樂理合成器
-        let audioCtx = null;
-        let isPlaying = false;
-        let lofiInterval = null;
-        let step = 0;
-
-        const chords = [
-            [261.63, 329.63, 392.00, 493.88], 
-            [220.00, 261.63, 329.63, 392.00], 
-            [293.66, 349.23, 440.00, 523.25], 
-            [196.00, 246.94, 293.66, 392.00]  
-        ];
-
-        function playLoFiBeat() {
-            if (!audioCtx || !isPlaying) return;
-            const now = audioCtx.currentTime;
-            const currentChord = chords[Math.floor(step / 4) % chords.length];
-
-            // 類比底噪
-            if (step % 2 === 0) {
-                let noiseOsc = audioCtx.createOscillator();
-                let noiseGain = audioCtx.createGain();
-                noiseOsc.type = 'triangle';
-                noiseOsc.frequency.setValueAtTime(60 + Math.random() * 5, now);
-                noiseGain.gain.setValueAtTime(0.012, now);
-                noiseGain.gain.exponentialRampToValueAtTime(0.001, now + 0.3);
-                noiseOsc.connect(noiseGain);
-                noiseGain.connect(audioCtx.destination);
-                noiseOsc.start(now);
-                noiseOsc.stop(now + 0.3);
-            }
-
-            // 舒服的重低音
-            if (step % 2 === 0) {
-                let osc = audioCtx.createOscillator();
-                let gain = audioCtx.createGain();
-                osc.type = 'sine';
-                osc.frequency.setValueAtTime(85, now); 
-                osc.frequency.exponentialRampToValueAtTime(45, now + 0.12); 
-                gain.gain.setValueAtTime(0.25, now);
-                gain.gain.exponentialRampToValueAtTime(0.001, now + 0.18);
-                osc.connect(gain);
-                gain.connect(audioCtx.destination);
-                osc.start(now);
-                osc.stop(now + 0.18);
-            }
-
-            // 輕快爵士和弦
-            if (step % 4 === 0) {

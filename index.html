@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>想要700訂閱的小勒 | Portal Site</title>
+    <title>小勒的官網☆*: .｡. o(≧▽≦)o .｡.:*☆</title>
     <style>
         * {
             box-sizing: border-box;
@@ -11,7 +11,7 @@
         }
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #1caec4, #57e3f5); /* 使用你提供的青綠色調 */
+            background: linear-gradient(135deg, #1caec4, #57e3f5); /* 初音綠/青綠色調 */
             color: #333;
             text-align: center;
             padding: 50px 20px;
@@ -32,22 +32,25 @@
             z-index: 10;
         }
         img.avatar {
-            width: 120px;
-            height: 120px;
+            width: 130px;
+            height: 130px;
             border-radius: 50%;
             border: 4px solid #fff;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            object-fit: cover;
         }
         h1 { 
-            margin: 20px 0 5px; 
+            margin: 20px 0 8px; 
             font-size: 24px; 
             color: #127a8a;
+            line-height: 1.4;
         }
         p.tagline { 
             font-style: italic; 
-            color: #555; 
+            color: #444; 
             margin-bottom: 30px;
-            font-size: 14px;
+            font-size: 16px;
+            font-weight: 500;
         }
         .links-container { 
             display: flex; 
@@ -134,15 +137,15 @@
 <body>
 
     <div class="container">
-        <!-- 記得把這裡的圖片網址替換成小勒的頭像 -->
-        <img class="avatar" src="https://placeholder.com" alt="小勒的頭像">
+        <!-- 這裡讀取你上傳到 GitHub 的頭像圖片 -->
+        <img class="avatar" src="avatar.png" alt="小勒的頭像">
         
-        <h1>想要700訂閱的小勒</h1>
-        <p class="tagline">🐾 飛舞的貓貓會帶走你的思念 🐾</p>
+        <!-- 更新後的主標題與副標題介紹 -->
+        <h1>小勒的官網☆*: .｡. o(≧▽≦)o .｡.:*☆</h1>
+        <p class="tagline">嘿嘿!被你發現了(^///^)</p>
         
         <div class="links-container">
-            <a class="link-btn" href="https://youtube.com" target="_blank">YouTube 頻道</a>
-            <!-- 點擊驚喜按鈕 -->
+            <a class="link-btn" href="https://youtube.com" target="_blank">YouTube 頻道 🎬</a>
             <div class="link-btn surprise-btn" id="surpriseBtn">點我有驚喜！🐾</div>
         </div>
         
@@ -158,14 +161,12 @@
             cat.classList.add('snowflake');
             cat.innerText = cats[Math.floor(Math.random() * cats.length)];
             cat.style.left = Math.random() * 100 + 'vw';
-            cat.style.animationDuration = Math.random() * 3 + 4 + 's'; // 4到7秒飄完
+            cat.style.animationDuration = Math.random() * 3 + 4 + 's';
             cat.style.opacity = Math.random() * 0.5 + 0.3;
             cat.style.fontSize = Math.random() * 15 + 15 + 'px';
             document.body.appendChild(cat);
 
-            setTimeout(() => {
-                cat.remove();
-            }, 7000);
+            setTimeout(() => { cat.remove(); }, 7000);
         }
         setInterval(createFallingCat, 400);
 
@@ -173,7 +174,7 @@
         let lastMove = 0;
         window.addEventListener('mousemove', (e) => {
             const now = Date.now();
-            if (now - lastMove < 50) return; // 限制產生頻率，避免太卡
+            if (now - lastMove < 50) return;
             lastMove = now;
 
             const paw = document.createElement('div');
@@ -195,7 +196,6 @@
                 burst.style.left = x + 'px';
                 burst.style.top = y + 'px';
 
-                // 隨機噴射方向
                 const angle = Math.random() * Math.PI * 2;
                 const distance = Math.random() * 80 + 40;
                 const mx = Math.cos(angle) * distance + 'px';
@@ -208,22 +208,18 @@
             }
         }
 
-        // 綁定全網頁點擊與驚喜按鈕
         window.addEventListener('click', (e) => {
-            // 排除點擊超連結，讓超連結正常運作
             if (e.target.tagName !== 'A') {
                 triggerBurst(e.clientX, e.clientY);
             }
         });
 
-        // 點擊驚喜按鈕時額外大爆發
         document.getElementById('surpriseBtn').addEventListener('click', (e) => {
-            e.stopPropagation(); // 防止觸發視窗點擊重複計算
+            e.stopPropagation();
             const rect = e.target.getBoundingClientRect();
             const centerX = rect.left + rect.width / 2;
             const centerY = rect.top + rect.height / 2;
             
-            // 多爆發幾次造成大噴發效果
             for (let j = 0; j < 3; j++) {
                 setTimeout(() => {
                     triggerBurst(centerX + (Math.random() * 40 - 20), centerY + (Math.random() * 20 - 10));

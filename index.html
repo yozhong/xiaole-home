@@ -8,8 +8,8 @@
         * {
             box-sizing: border-box;
             user-select: none;
-            -webkit-user-select: none; /* 避免手機長按文字被選取 */
-            -webkit-tap-highlight-color: transparent; /* 移除手機點擊時的藍色陰影框 */
+            -webkit-user-select: none;
+            -webkit-tap-highlight-color: transparent;
         }
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -92,7 +92,7 @@
             transition: all 0.2s ease;
             cursor: pointer;
         }
-        .link-btn:active { /* 手機點擊時的反饋效果 */
+        .link-btn:active { 
             transform: scale(0.98);
             background: #4a69bd;
         }
@@ -103,7 +103,6 @@
             color: #a0aec0; 
         }
         
-        /* 特效元件 */
         .snowflake {
             position: fixed;
             top: -10%;
@@ -154,7 +153,6 @@
 <body>
 
     <div class="container">
-        <!-- 手機長按會有「點我有驚喜」提示字，且點擊能播放音樂 -->
         <img class="avatar" id="mainAvatar" title="點我有驚喜" src="https://screenshotone.com" onerror="this.src='https://github.io';" alt="小勒的頭像">
         
         <h1>小勒的秘密基地ฅ^•ω•^ฅ</h1>
@@ -173,7 +171,7 @@
             return "url('https://screenshotone.com')";
         }
 
-        // 1. 背景圖片自動飄落（手機版數量稍微縮減避免耗電卡頓）
+        // 1. 背景圖片自動飄落
         function createFallingCat() {
             const cat = document.createElement('div');
             cat.classList.add('snowflake');
@@ -181,7 +179,7 @@
             cat.style.left = Math.random() * 100 + 'vw';
             cat.style.animationDuration = Math.random() * 4 + 7 + 's'; 
             cat.style.opacity = Math.random() * 0.2 + 0.4; 
-            const size = Math.random() * 20 + 30; // 手機版稍微縮小一點點點
+            const size = Math.random() * 20 + 30; 
             cat.style.width = size + 'px';
             cat.style.height = size + 'px';
             document.body.appendChild(cat);
@@ -209,19 +207,19 @@
             spawnTrail(e.clientX, e.clientY);
         });
 
-        // 手機手指拖曳滑動軌跡
+        // 修正：手機手指拖曳滑動軌跡語法
         window.addEventListener('touchmove', (e) => {
             const now = Date.now();
             if (now - lastMove < 50) return;
             lastMove = now;
-            if(e.touches.length > 0) {
+            if(e.touches && e.touches.length > 0) {
                 spawnTrail(e.touches[0].clientX, e.touches[0].clientY);
             }
         });
 
         // 3. 點擊大爆發函數
         function triggerBurst(x, y) {
-            for (let i = 0; i < 8; i++) { // 手機版爆發 8 張，流暢度最高
+            for (let i = 0; i < 8; i++) { 
                 const burst = document.createElement('div');
                 burst.classList.add('click-burst');
                 burst.style.backgroundImage = getAvatarUrl(); 
@@ -238,7 +236,6 @@
             }
         }
 
-        // 支援電腦點擊與手機輕觸爆炸（排除按鈕與頭像）
         function handleClickOrTouch(e, clientX, clientY) {
             if (e.target.tagName !== 'A' && e.target.id !== 'mainAvatar') {
                 triggerBurst(clientX, clientY);
@@ -246,13 +243,13 @@
         }
 
         window.addEventListener('click', (e) => {
-            // 如果是觸控事件觸發的 click 就跳過，避免手機重複觸發
             if (e.detail === 0) return; 
             handleClickOrTouch(e, e.clientX, e.clientY);
         });
 
+        // 修正：手機輕觸爆炸語法
         window.addEventListener('touchstart', (e) => {
-            if (e.touches.length > 0) {
+            if (e.touches && e.touches.length > 0) {
                 handleClickOrTouch(e, e.touches[0].clientX, e.touches[0].clientY);
             }
         });
@@ -279,3 +276,6 @@
                 let noiseOsc = audioCtx.createOscillator();
                 let noiseGain = audioCtx.createGain();
                 noiseOsc.type = 'triangle';
+                noiseOsc.frequency.setValueAtTime(60 + Math.random() * 5, now);
+                noiseGain.gain.setValueAtTime(0.012, now);
+                noiseGain.gain.exponentialRampToValueAtTime(0.001, now + 0.3);

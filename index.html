@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>小勒的官網𝕏𝕚𝕒𝕠𝕃𝕖'𝕤 𝕠𝕗𝕗𝕚𝕔𝕚𝕒𝕝 𝕨𝕖𝕓𝕤𝕚𝕥𝕖</title>
+    <title>小勒的官網𝕏𝕚宏𝕃𝕖'𝕤 𝕠𝕗𝕗𝕚𝕔𝕚𝕒𝕝 𝕨𝕖𝕓𝕤𝕚𝕥𝕖</title>
     <style>
         * {
             box-sizing: border-box;
@@ -153,6 +153,7 @@
 <body>
 
     <div class="container">
+        <!-- 核心頭像與網址修正 -->
         <img class="avatar" id="mainAvatar" title="點我有驚喜" src="https://screenshotone.com" onerror="this.src='https://github.io';" alt="小勒的頭像">
         
         <h1>小勒的秘密基地ฅ^•ω•^ฅ</h1>
@@ -207,7 +208,7 @@
             spawnTrail(e.clientX, e.clientY);
         });
 
-        // 修正：手機手指拖曳滑動軌跡語法
+        // 手機手指拖曳滑動軌跡修正
         window.addEventListener('touchmove', (e) => {
             const now = Date.now();
             if (now - lastMove < 50) return;
@@ -247,7 +248,6 @@
             handleClickOrTouch(e, e.clientX, e.clientY);
         });
 
-        // 修正：手機輕觸爆炸語法
         window.addEventListener('touchstart', (e) => {
             if (e.touches && e.touches.length > 0) {
                 handleClickOrTouch(e, e.touches[0].clientX, e.touches[0].clientY);

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>小勒的官網𝕏𝕚宏𝕃𝕖'𝕤 𝕠𝕗𝕗𝕚𝕔𝕚𝕒𝕝 𝕨𝕖𝕓𝕤𝕚𝕥𝕖</title>
+    <title>小勒的官網𝕏𝕚𝕒𝕠𝕃𝕖'𝕤 𝕠𝕗𝕗𝕚𝕔𝕚𝕒𝕝 𝕨𝕖𝕓𝕤𝕚𝕥𝕖</title>
     <style>
         * {
             box-sizing: border-box;
@@ -153,8 +153,8 @@
 <body>
 
     <div class="container">
-        <!-- 核心頭像與網址修正 -->
-        <img class="avatar" id="mainAvatar" title="點我有驚喜" src="https://screenshotone.com" onerror="this.src='https://github.io';" alt="小勒的頭像">
+        <!-- 核心頭像與路徑：已鎖定全小寫的 avatar.png -->
+        <img class="avatar" id="mainAvatar" title="點我有驚喜" src="avatar.png" alt="小勒的頭像">
         
         <h1>小勒的秘密基地ฅ^•ω•^ฅ</h1>
         <p class="tagline">竟然被你發現了?!(害羞害羞)^//• ω •//^</p>
@@ -168,8 +168,9 @@
     </div>
 
     <script>
+        // 強制鎖定小寫路徑
         function getAvatarUrl() {
-            return "url('https://screenshotone.com')";
+            return "url('avatar.png')";
         }
 
         // 1. 背景圖片自動飄落
@@ -208,7 +209,7 @@
             spawnTrail(e.clientX, e.clientY);
         });
 
-        // 手機手指拖曳滑動軌跡修正
+        // 手機手指拖曳軌跡修正 (使用陣列第0個元素精準定位)
         window.addEventListener('touchmove', (e) => {
             const now = Date.now();
             if (now - lastMove < 50) return;
@@ -248,6 +249,7 @@
             handleClickOrTouch(e, e.clientX, e.clientY);
         });
 
+        // 手機輕觸大爆發修正 (使用陣列第0個元素精準定位)
         window.addEventListener('touchstart', (e) => {
             if (e.touches && e.touches.length > 0) {
                 handleClickOrTouch(e, e.touches[0].clientX, e.touches[0].clientY);
@@ -279,3 +281,6 @@
                 noiseOsc.frequency.setValueAtTime(60 + Math.random() * 5, now);
                 noiseGain.gain.setValueAtTime(0.012, now);
                 noiseGain.gain.exponentialRampToValueAtTime(0.001, now + 0.3);
+                noiseOsc.connect(noiseGain);
+                noiseGain.connect(audioCtx.destination);
+                noiseOsc.start(now);

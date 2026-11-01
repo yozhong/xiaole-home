@@ -202,8 +202,8 @@
         <p class="tagline">竟然被你發現了?!(害羞害羞)^//• ω •//^</p>
         
         <div class="links-container">
-            <a class="link-btn" href="https://youtube.com" target="_blank">🎬 YouTube 頻道 🎬</a>
-            <a class="link-btn" href="https://telegra.ph" target="_blank">📜 自設介紹 📜</a>
+            <a class="link-btn" href="https://www.youtube.com/@%E6%83%B3%E8%A6%81700%E8%A8%82%E9%96%B1%E7%9A%84%E5%B0%8F%E5%8B%92" target="_blank">🎬 YouTube 頻道 🎬</a>
+            <a class="link-btn" href="https://telegra.ph/%E8%87%AA%E8%A8%AD%E4%BB%8B%E7%B4%B9-%E0%B8%85%CF%89%E0%B8%85-10-25" target="_blank">📜 自設介紹 📜</a>
         </div>
         
         <footer>© 2026 想要700訂閱的小勒 Project</footer>
@@ -212,8 +212,7 @@
     <script>
         // 抓取網頁上成功載入的頭像網址，確保特效百分之百有貓貓圖
         function getAvatarUrl() {
-            const img = document.getElementById('mainAvatar');
-            return img ? `url('${img.src}')` : "url('avatar.png')";
+            return "url('avatar.png')";
         }
 
         // 1. 背景圖片自動飄落
@@ -291,4 +290,21 @@
             if (e.detail === 0) return; 
             handleClickOrTouch(e, e.clientX, e.clientY);
         });
+        // --- 簡單的真實 MP3 播放控制 ---
+        let audio = new Audio('bgm.mp3'); // 讀取你上傳的音訊檔
+        audio.loop = true; // 設定自動循環播放
+        let isPlaying = false;
 
+        const avatarBtn = document.getElementById('mainAvatar');
+        avatarBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        if (!isPlaying) {
+            audio.play();
+            isPlaying = true;
+            avatarBtn.classList.add('playing'); // 讓頭像開始發光/律動
+        } else {
+            audio.pause();
+            isPlaying = false;
+            avatarBtn.classList.remove('playing');
+        }
+    });
